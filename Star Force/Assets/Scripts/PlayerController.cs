@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public float tilt;
     public float xMin, xMax, yMin, yMax;
 
     private Rigidbody rb;
@@ -43,6 +42,5 @@ public class PlayerController : MonoBehaviour
                 Mathf.Clamp(rb.position.y, yMin, yMax),
                 0.0f
             );
-        rb.rotation = Quaternion.Euler(-90.0f, rb.velocity.x * -tilt, 0.0f); // facultatif (ca rajoute du tilt
     }
 }
