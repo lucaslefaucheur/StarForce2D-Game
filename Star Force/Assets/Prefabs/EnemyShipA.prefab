@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 54338559572448072}
   - component: {fileID: 64514462234945106}
   - component: {fileID: 114713531849679456}
-  - component: {fileID: 114145481602699200}
   m_Layer: 0
   m_Name: EnemyShipA
   m_TagString: Untagged
@@ -53,13 +52,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1002530760813134}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.684}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4075756164221958}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4075756164221958
 Transform:
   m_ObjectHideFlags: 1
@@ -146,17 +145,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 5282f20eba4d44213820e21af8481932, type: 3}
---- !u!114 &114145481602699200
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320738841066920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8047c3a472aec451ea1d3afbca293b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114713531849679456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,3 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a65bf59b7caa444f8e0ca40124d9d6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shot: {fileID: 1957092642977418, guid: 3b967eec8dd4d449cb01dd864f5c9037, type: 2}
+  shotSpawn: {fileID: 4029216204533988}
+  fireRate: 3
