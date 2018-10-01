@@ -3,12 +3,9 @@ using UnityEngine;
 
 public class EnemyBoltController: MonoBehaviour {
 
-    private Rigidbody rb;
-
-    void Start()
+    private void Update()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.velocity = Vector3.down * 10;
+        transform.Translate(0, 10 * Time.deltaTime, 0);
         Destroy(gameObject, 3);
     }
 }

@@ -11,12 +11,21 @@ public class EnemyAController : MonoBehaviour {
     public float fireRate;
     private float nextFire;
 
+    public GameObject EnemyHitParticle;
+
+    private AudioSource DamageSound;
+
+    private void Start()
+    {
+        DamageSound = GetComponent<AudioSource>();
+    }
+
     void Update () 
     {
-        if (gameObject.transform.position.y >= 18)
+        if (gameObject.transform.position.y >= 16)
             direction = 1;
 
-        if (gameObject.transform.position.y <= 4)
+        if (gameObject.transform.position.y <= 0)
             direction = -1;
 
         transform.Translate(0, 0, 2 * direction * Time.deltaTime);
@@ -32,10 +41,11 @@ public class EnemyAController : MonoBehaviour {
     {
         if (other.tag == "PlayerBolt")
         {
+            DamageSound.Play();
+            Instantiate(EnemyHitParticle, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(other.gameObject);
             Destroy(gameObject);
-            var test = GameObject.FindGameObjectWithTag("GameController");
-            test.SendMessage("EnemyDestroyed");
+            GameObject.FindGameObjectWithTag("GameController").SendMessage("EnemyTakeDamage", 100);
         }
     }
 }

@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class PlayerBoltController : MonoBehaviour {
 
-    private Rigidbody rb;
+    public bool BulletHell;
+    private int count = 1;
 
-    void Start()
+    private void Update()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.velocity = Vector3.up * 20;
-        Destroy(gameObject, 3);
+        transform.Translate(0, -20 * Time.deltaTime, 0);
+        if (BulletHell) 
+        {
+            if (gameObject.transform.position.y >= 20) 
+            {
+                if (count < 3)
+                {
+                    float posx = gameObject.transform.position.x;
+                    transform.position += new Vector3(-2 * posx, -30, 0);
+                    count++;
+                }
+                else 
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
     }
 }
