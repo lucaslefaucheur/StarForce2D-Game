@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyBController : MonoBehaviour {
 
-    int direction = 1;
+    int directionx = -1;
+    int directiony = 1;
 
     public GameObject shot;
     public Transform shotSpawn;
@@ -22,14 +23,22 @@ public class EnemyBController : MonoBehaviour {
 
     void Update()
     {
+        // determine the x direction of the enemy ship 
+        if (gameObject.transform.position.x <= -8)
+            directionx = 1;
+        if (gameObject.transform.position.x >= 8)
+            directionx = -1;
+
+        // determine the y direction of the enemy ship 
         if (gameObject.transform.position.y >= 16)
-            direction = 1;
-
+            directiony = 1;
         if (gameObject.transform.position.y <= 0)
-            direction = -1;
+            directiony = -1;
 
-        transform.Translate(0, 0, 2 * direction * Time.deltaTime);
+        // move the enemy ship continuously in the direction determined above
+        transform.Translate(2 * directionx * Time.deltaTime, 0, 2 * directiony * Time.deltaTime);
 
+        // enemy ship shoots a bolt regularly 
         if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
@@ -39,13 +48,14 @@ public class EnemyBController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        // if an enemy ship is touched by a player's bolt 
         if (other.tag == "PlayerBolt")
         {
-            DamageSound.Play();
-            Instantiate(EnemyHitParticle, gameObject.transform.position, gameObject.transform.rotation);
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-            GameObject.FindGameObjectWithTag("GameController").SendMessage("EnemyTakeDamage", 200);
+            DamageSound.Play(); // play a sound (does not work)
+            Instantiate(EnemyHitParticle, gameObject.transform.position, gameObject.transform.rotation); // emit a particle effect
+            Destroy(other.gameObject); // destroy the player's bolt
+            Destroy(gameObject); // destroy the enemy ship 
+            GameObject.FindGameObjectWithTag("GameController").SendMessage("EnemyTakeDamage", 200); // notify the game controller
         }
     }
 }

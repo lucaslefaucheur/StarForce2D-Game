@@ -5,11 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
+    // load the game scene when a mode is selected 
     public void PlayGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+ 1);
-    }
-
-    public void BulletHellMode() {
-        //GameObject.FindGameObjectWithTag("PlayerBolt").SendMessage("BulletHellMode");
     }
 }

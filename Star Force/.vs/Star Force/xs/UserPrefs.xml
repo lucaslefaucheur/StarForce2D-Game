@@ -1,14 +1,6 @@
 ﻿<Properties StartupConfiguration="{7DC146D7-B77A-78B7-6F01-F095313D665A}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PowerUpController.cs">
-    <Files>
-      <File FileName="Assets/Scripts/EnemyBossController.cs" Line="24" Column="18" />
-      <File FileName="Assets/Scripts/EnemyAController.cs" Line="44" Column="32" />
-      <File FileName="Assets/Scripts/EnemyBController.cs" Line="44" Column="32" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="16" Column="5" />
-      <File FileName="Assets/Scripts/PowerUpController.cs" Line="16" Column="6" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

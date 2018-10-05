@@ -23,14 +23,16 @@ public class EnemyBossController : MonoBehaviour {
 
     void Update()
     {
+        // determine the y direction of the enemy ship 
         if (gameObject.transform.position.y >= 16)
             direction = 1;
-
         if (gameObject.transform.position.y <= 0)
             direction = -1;
 
+        // move the enemy ship continuously in the direction determined above
         transform.Translate(0, 0, direction * Time.deltaTime);
 
+        // enemy ship shoots 3 bolt regularly 
         if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
@@ -42,12 +44,13 @@ public class EnemyBossController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        // if the boss enemy ship is touched by a player's bolt 
         if (other.tag == "PlayerBolt")
         {
-            DamageSound.Play();
-            Instantiate(EnemyHitParticle, gameObject.transform.position, gameObject.transform.rotation);
-            Destroy(other.gameObject);
-            GameObject.FindGameObjectWithTag("GameController").SendMessage("BossTakeDamage");
+            DamageSound.Play(); // play a sound (does not work)
+            Instantiate(EnemyHitParticle, gameObject.transform.position, gameObject.transform.rotation); // emit a particle effect
+            Destroy(other.gameObject); // destroy the player's bolt
+            GameObject.FindGameObjectWithTag("GameController").SendMessage("BossTakeDamage"); // notify the game controller
         }
     }
 }
